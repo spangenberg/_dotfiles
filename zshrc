@@ -2,6 +2,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="neonlex"
 DISABLE_AUTO_UPDATE="true"
 DISABLE_LS_COLORS="true"
+DISABLE_AUTO_TITLE="true"
 
 plugins=(brew bundler gem git neonlex rails3 rake rbenv ruby rvm vagrant)
 if [[ $platform == "osx" ]]; then
@@ -16,3 +17,12 @@ source $ZSH/oh-my-zsh.sh
 
 # for Homebrew installed rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# start tmux session on ssh connect
+if [ "$PS1" != "" -a "${STARTED_TMUX:-x}" = x -a "${SSH_TTY:-x}" != x ]
+then
+  STARTED_TMUX=1; export STARTED_TMUX
+  sleep 1
+  ( (tmux has-session -t remote && tmux attach-session -t remote) || (tmux new-session -s remote) ) && exit 0
+  echo "tmux failed to start"
+fi

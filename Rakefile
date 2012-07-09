@@ -6,6 +6,7 @@ task :install do
   install_oh_my_zsh
   switch_to_zsh
   install_janus
+  install_rbenv
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.md LICENSE oh-my-zsh]
   files << "oh-my-zsh/custom/plugins/neonlex"
@@ -105,6 +106,28 @@ def install_janus
       exit
     else
       puts "skipping janus"
+    end
+  end
+end
+
+def install_rbenv
+  if File.exists?(File.join(ENV['HOME'], ".rbenv"))
+    puts "found ~/.rbenv"
+  else
+    print "install rbenv? [ynq] "
+    case $stdin.gets.chomp
+    when 'y'
+      puts "installing rbenv"
+      system %Q{git clone https://github.com/sstephenson/rbenv.git "$HOME/.rbenv"}
+      system %Q{mkdir -p "$HOME/.rbenv/plugins"}
+      puts "installing ruby-build"
+      system %Q{git clone https://github.com/sstephenson/ruby-build.git "$HOME/.rbenv/plugins/ruby-build"}
+      puts "installing rbenv-gemset"
+      system %Q{git clone https://github.com/jamis/rbenv-gemset.git "$HOME/.rbenv/plugins/rbenv-gemset"}
+    when 'q'
+      exit
+    else
+      puts "skipping rbenv"
     end
   end
 end
