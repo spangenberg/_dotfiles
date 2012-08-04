@@ -5,8 +5,6 @@ desc "install the dot files into user's home directory"
 task :install do
   install_oh_my_zsh
   switch_to_zsh
-  install_janus
-  install_rbenv
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.md LICENSE oh-my-zsh]
   files << "oh-my-zsh/custom/plugins/neonlex"
@@ -36,6 +34,8 @@ task :install do
       link_file(file)
     end
   end
+  install_janus
+  install_rbenv
 end
 
 def replace_file(file)
