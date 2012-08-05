@@ -4,6 +4,14 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_LS_COLORS="true"
 DISABLE_AUTO_TITLE="true"
 
+platform='unknown'
+unamestr=`uname`
+if [[ "$unamestr" == 'Linux' ]]; then
+  platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+  platform='osx'
+fi
+
 plugins=(brew bundler gem git neonlex rails3 rake rbenv ruby rvm vagrant)
 if [[ $platform == "osx" ]]; then
   plugins+=(brew osx pow sublime)
