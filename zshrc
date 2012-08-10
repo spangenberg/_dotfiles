@@ -12,14 +12,15 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
   platform='osx'
 fi
 
-plugins=(brew bundler gem git neonlex rails3 rake rbenv ruby rvm vagrant)
+plugins=(bundler gem git neonlex rails3 rake rbenv ruby)
 if [[ $platform == "osx" ]]; then
-  plugins+=(brew osx pow sublime)
+  plugins+=(brew osx pow sublime textmate vagrant)
 elif [[ $platform == "linux" ]]; then
   plugins+=(debian command-not-found)
 fi
 
 export PATH="/usr/local/bin:$PATH"
+export LANG="en_US.UTF-8"
 
 source $ZSH/oh-my-zsh.sh
 
