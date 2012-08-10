@@ -35,5 +35,5 @@ Thumbs.db
 
 # Environment specific files #
 ##############################
-.rbenv-gemsets
+.rbenv*
 *~
