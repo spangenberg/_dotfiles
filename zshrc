@@ -1,7 +1,6 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="neonlex"
 DISABLE_AUTO_UPDATE="true"
-DISABLE_LS_COLORS="true"
 DISABLE_AUTO_TITLE="true"
 
 platform='unknown'
@@ -14,12 +13,13 @@ fi
 
 plugins=(bundler gem git neonlex rails3 rake rbenv ruby)
 if [[ $platform == "osx" ]]; then
-  plugins+=(brew osx pow sublime textmate vagrant)
+  plugins+=(brew osx sublime textmate)
 elif [[ $platform == "linux" ]]; then
   plugins+=(debian command-not-found)
 fi
 
 export PATH="/usr/local/bin:$PATH"
+export NODE_PATH="/usr/local/lib/node_modules"
 export LANG="en_US.UTF-8"
 
 source $ZSH/oh-my-zsh.sh

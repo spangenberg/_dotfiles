@@ -12,9 +12,10 @@ export EDITOR='vim'
 unsetopt correct_all
 
 # a few aliases I like
-alias gs='git status'
-alias gd='git diff'
-alias tlog='tail -f log/development.log'
+alias run-redis="redis-server /usr/local/etc/redis.conf"
+alias run-couchdb="couchdb"
+alias run-mongodb="mongod run --config /usr/local/etc/mongod.conf"
+alias run-riak="riak start && riak attach"
 
 # add plugin's bin directory to path
 export PATH="$(dirname $0)/bin:$PATH"
