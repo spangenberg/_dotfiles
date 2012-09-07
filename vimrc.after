@@ -1,4 +1,8 @@
-colorscheme github
+let g:solarized_termcolors=256
+syntax enable
+set background=dark
+colorscheme solarized
+
 let g:NERDTreeWinPos = "right"
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
@@ -7,6 +11,16 @@ autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> c
 :set cpoptions+=$ " puts a $ marker for the end of words/lines in cw/c$ commands
 
 let g:Powerline_symbols = 'unicode'
+
+
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
 
 
 " Prompt for a command to run
