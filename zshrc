@@ -35,3 +35,10 @@ then
   ( (tmux has-session -t remote && tmux attach-session -t remote) || (tmux new-session -s remote) ) && exit 0
   echo "tmux failed to start"
 fi
+
+# A..... fix
+zstyle ':completion:*:scp:*' users list of usernames
+zstyle ':completion:*:scp:*' hosts list of hostnames
+zstyle ':completion:*:ssh:*' users list of usernames
+zstyle ':completion:*:ssh:*' hosts list of hostnames
+setopt no_cdable_vars
