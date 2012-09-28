@@ -16,6 +16,7 @@ alias run-redis="redis-server /usr/local/etc/redis.conf"
 alias run-couchdb="couchdb"
 alias run-mongodb="mongod run --config /usr/local/etc/mongod.conf"
 alias run-riak="riak start && riak attach"
+porn() { ruby $1 -n /XXX/ }
 
 # add plugin's bin directory to path
 export PATH="$(dirname $0)/bin:$PATH"
