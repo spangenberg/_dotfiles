@@ -6,9 +6,7 @@ task :install do
   install_prezto
   switch_to_zsh
   replace_all = false
-  files = Dir['*'] - %w[Rakefile README.md LICENSE oh-my-zsh]
-  files << "oh-my-zsh/custom/plugins/neonlex"
-  files << "oh-my-zsh/custom/neonlex.zsh-theme"
+  files = Dir['*'] - %w[Rakefile README.md LICENSE]
   files.each do |file|
     system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
@@ -49,7 +47,7 @@ def link_file(file)
     File.open(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"), 'w') do |new_file|
       new_file.write ERB.new(File.read(file)).result(binding)
     end
-  elsif file =~ /zshrc$/ # copy zshrc instead of link
+  elsif file =~ /zshenv|zpreztorc$/
     puts "copying ~/.#{file}"
     system %Q{cp "$PWD/#{file}" "$HOME/.#{file}"}
   else
