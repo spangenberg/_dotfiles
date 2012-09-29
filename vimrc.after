@@ -3,7 +3,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = 'right'
 set guioptions-=T " Removes top toolbar
 set guioptions-=r " Removes right hand scroll bar
 set go-=L " Removes left hand scroll bar
@@ -12,7 +12,7 @@ autocmd User Rails let b:surround_{char2nr('-')} = "<% \r %>" " displays <% %> c
 
 let g:Powerline_symbols = 'fancy'
 
-
+" fuck you arrow keys
 noremap  <Up> ""
 noremap! <Up> <Esc>
 noremap  <Down> ""
@@ -22,18 +22,9 @@ noremap! <Left> <Esc>
 noremap  <Right> ""
 noremap! <Right> <Esc>
 
-
-" Prompt for a command to run
+" vimux shortcuts
 map rp :PromptVimTmuxCommand
-
-" Run last command executed by RunVimTmuxCommand
 map rl :RunLastVimTmuxCommand
-
-" Inspect runner pane
 map ri :InspectVimTmuxRunner
-
-" Close all other tmux panes in current window
 map rx :CloseVimTmuxPanes
-
-" Interrupt any command running in the runner pane
 map rs :InterruptVimTmuxRunner

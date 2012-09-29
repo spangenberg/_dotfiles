@@ -3,7 +3,7 @@ require 'erb'
 
 desc "install the dot files into user's home directory"
 task :install do
-  install_oh_my_zsh
+  install_prezto
   switch_to_zsh
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.md LICENSE oh-my-zsh]
@@ -75,19 +75,19 @@ def switch_to_zsh
   end
 end
 
-def install_oh_my_zsh
-  if File.exist?(File.join(ENV['HOME'], ".oh-my-zsh"))
-    puts "found ~/.oh-my-zsh"
+def install_prezto
+  if File.exist?(File.join(ENV['HOME'], '.zprezto'))
+    puts "found ~/.zprezto"
   else
-    print "install oh-my-zsh? [ynq] "
+    print "install prezto? [ynq] "
     case $stdin.gets.chomp
     when 'y'
-      puts "installing oh-my-zsh"
-      system %Q{git clone https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"}
+      puts "installing prezto"
+      system %Q{git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"}
     when 'q'
       exit
     else
-      puts "skipping oh-my-zsh, you will need to change ~/.zshrc"
+      puts "skipping prezto, you will need to change ~/.zshrc"
     end
   end
 end
