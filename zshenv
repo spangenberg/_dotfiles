@@ -16,7 +16,7 @@ fi
 
 export EDITOR='vi'
 export VISUAL='vi'
-export PAGER='vi'
+export PAGER='less'
 
 #
 # Language
