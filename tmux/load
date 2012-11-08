@@ -1,14 +1,3 @@
-#!/usr/bin/env ruby
+#!/bin/sh
 
-date_and_time = Time.now.strftime('%a %b %d %H:%M')
-
-meminfo = `cat /proc/meminfo`.split("\n")
-
-memtotal = meminfo.grep(/MemTotal/)[0].gsub(/\D/, '').to_i
-memfree  = meminfo.grep(/MemFree/)[0].gsub(/\D/, '').to_i
-
-loadavg = `cat /proc/loadavg`.split(' ')
-
-loadavg = [loadavg[0], loadavg[1], loadavg[2]].join(' ')
-
-puts "#{memtotal-memfree}/#{memtotal}  #{loadavg}  #{date_and_time}"
+uptime | cut -d ' ' -f 14- | sed 's/,//g' | sed 's/average: //g'

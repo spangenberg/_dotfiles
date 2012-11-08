@@ -1,0 +1,3 @@
+#!/bin/sh
+
+date +"%a %b %e    %l:%M %p" | sed 's/  / /g' | sed 's/   /  /g'
