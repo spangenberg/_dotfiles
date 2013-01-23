@@ -1,6 +1,9 @@
 #
 # Defines environment variables.
 #
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
 #
 # Browser
@@ -14,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='vi'
-export VISUAL='vi'
+export EDITOR='nano'
+export VISUAL='nano'
 export PAGER='less'
 
 #
@@ -44,8 +47,9 @@ fi
 # Paths
 #
 
-typeset -gU cdpath fpath mailpath manpath path
-typeset -gUT INFOPATH infopath
+typeset -gU cdpath fpath mailpath path
+typeset -gxU MANPATH
+typeset -gxUT INFOPATH infopath
 
 # Set the the list of directories that cd searches.
 # cdpath=(
@@ -94,3 +98,4 @@ if [[ -d "$TMPDIR" ]]; then
     mkdir -p "$TMPPREFIX"
   fi
 fi
+
