@@ -4,6 +4,7 @@ require 'erb'
 desc 'install the dot files into user\'s home directory'
 task :install do
   install_yadr
+  install_vim_plugins
   replace_all = false
   files = Dir['*'] - %w[Rakefile README.rdoc LICENSE ssh]
   files << 'ssh/config'
@@ -68,4 +69,9 @@ def install_yadr
     system %Q{git clone https://github.com/skwp/dotfiles ~/.yadr}
     system %Q{cd ~/.yadr && rake install}
   end
+end
+
+def install_vim_plugins
+  puts 'installing vim plugins'
+  system %Q{~/.yadr/bin/yadr/yadr vim-add-plugin -u https://github.com/benmills/vimux}
 end
